@@ -151,6 +151,12 @@ module ActiveMerchant
       credit_card.expiry_date.expiration.strftime('%Y-%m')
     end
 
+    def gift_card(number = 5022440000000000098, options = {})
+      defaults = { pin: 1234, brand: 'bogus' }.update(options)
+
+      Billing::GiftCard.new(options)
+    end
+
     def credit_card(number = '4242424242424242', options = {})
       defaults = {
         :number => number,

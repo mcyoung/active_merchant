@@ -4,7 +4,7 @@ module ActiveMerchant #:nodoc:
     end
 
     class Response
-      attr_reader :params, :message, :test, :authorization, :avs_result, :cvv_result, :error_code, :emv_authorization
+      attr_reader :params, :message, :test, :authorization, :avs_result, :cvv_result, :error_code, :emv_authorization, :balance_amt, :authorized_amt
 
       def success?
         @success
@@ -25,6 +25,8 @@ module ActiveMerchant #:nodoc:
         @fraud_review = options[:fraud_review]
         @error_code = options[:error_code]
         @emv_authorization = options[:emv_authorization]
+        @balance_amt = options[:balance_amt]
+        @authorized_amt = options[:authorized_amt]
 
         @avs_result = if options[:avs_result].kind_of?(AVSResult)
           options[:avs_result].to_hash
