@@ -41,7 +41,7 @@ module ActiveMerchant #:nodoc:
           authorized_amount = amount(available_balance)
         end
 
-        ActiveMerchant::Billing::Response.new(
+        auth = ActiveMerchant::Billing::Response.new(
           successful?(response.params),
           message_from(response.params),
           response.params,
@@ -50,6 +50,7 @@ module ActiveMerchant #:nodoc:
           balance_amt: response.balance_amt,
           authorized_amt: authorized_amount
         )
+        return auth
       end
 
       def capture(giftcard, amount, currency = "USD", options = {})
