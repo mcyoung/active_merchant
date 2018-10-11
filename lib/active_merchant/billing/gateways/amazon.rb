@@ -94,16 +94,26 @@ module ActiveMerchant #:nodoc:
           })
       end
 
-      def close(ref_number)
+      def close_authorization(auth_number)
         commit({
           "Action" => "CloseAuthorization",
           "AmazonAuthorizationId" => ref_number
           })
       end
 
+      def close_order(ref_number)
+        commit({
+          "Action" => "CloseOrderReference",
+          "AmazonOrderReferenceId" => ref_number
+        })
+      end
+
       def purchase(ref_number, total, currency)
+        data = set_order_data(ref_number, total, currency)
+        confirm = confirm_order(ref_number)
         response = authorize(ref_number, total, currency)
-        capture(response.authorization, "C#{Time.now.to_i}", total, currency)
+        cap = capture(response.authorization, "C#{Time.now.to_i}", total, currency)
+        close_order(ref_number)
       end
 
       def build_request_body(hash)
