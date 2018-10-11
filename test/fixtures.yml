@@ -21,6 +21,16 @@ allied_wallet:
   merchant_id: merchant_id
   token: token
 
+# Working credentials, no need to replace
+amazon:
+  some_credential: SOMECREDENTIAL
+  another_credential: ANOTHERCREDENTIAL
+
+# Working credentials, no need to replace
+amazon_pay:
+  some_credential: SOMECREDENTIAL
+  another_credential: ANOTHERCREDENTIAL
+
 # Working credentials, no need to replace as of Oct 28 2014
 authorize_net:
   login: 7Tt72zseSzH
@@ -85,6 +95,11 @@ blue_pay:
 blue_snap:
   api_username: 'API_146117371665767340423'
   api_password: 'nfYwTx8fFAvJqBXcxqwC8'
+
+# Working credentials, no need to replace
+blurb:
+  some_credential: SOMECREDENTIAL
+  another_credential: ANOTHERCREDENTIAL
 
 borgun:
   processor: 118
